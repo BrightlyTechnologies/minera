@@ -1,3 +1,4 @@
+
 <?php if (!defined('BASEPATH')) die();
 
 class App extends Main_Controller {
@@ -29,6 +30,8 @@ class App extends Main_Controller {
 			redirect('app/dashboard');
 			return false;
 		}
+		
+		$data['adsFree'] = $this->redis->set('is_ads_free',1);
 		
 		if (!$this->redis->command("EXISTS dashboard_devicetree")) $this->redis->set("dashboard_devicetree", 1);
 		if (!$this->redis->command("EXISTS dashboard_box_profit")) $this->redis->set("dashboard_box_profit", 1);
